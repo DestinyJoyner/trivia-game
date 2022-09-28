@@ -15,10 +15,50 @@ header {
     font-family: henny penny;
     font-size: 14px;
     color: rgb(37, 11, 205);
-    display: grid;
+    display: block;
     align-items: center;
     justify-content: center;
 }
+
+.landingPage {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('./assets/game-show-enter-name-image\ copy.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    
+}
+
+.landingPage div {
+    margin: 0 auto;
+    height: 50%;
+    width: fit-content;
+    /* border: 2px solid green; */
+    display: grid;
+    grid-template-rows: .5fr .5fr .5fr;
+    font-size: 20px;
+
+}
+label {
+    align-self:flex-end;
+}
+#userName {
+    height: 30px;
+}
+#playButton {
+    height: 30px;
+    background-color: navy;
+    color: gold;
+    font-size: 16px;
+    font-family: henny penny;
+}
+
+
+
 .user {
     color: rgb(6, 221, 24);
 }
@@ -28,6 +68,10 @@ main {
     border: 2px solid purple;
     display: grid;
     grid-template-rows: 1fr 6fr;
+}
+
+.hidden {
+    display: none;
 }
 
 h1, p, #question {
