@@ -37,35 +37,66 @@ const fetchInfo = async () => {
     
 }
 
-//Event Listener for 'next' button to generate new question and answers
-next.addEventListener(`click`, () => {
-    index++
-    if(index >= updatedResults.length){
-        question.innerHTML = `${scoreSpan.innerHTML}`
-        answers.innerHTML = ``
+// function for display after correct or incorrect answer is selected
+const answerChoice = (choice) => {
+    answers.classList.toggle(`${choice}`)
+    if(choice === `correctAnswer`){
+        answers.innerHTML =  `Correct!`
     }
     else {
-        answers.innerHTML = ``
-        updateQuestion()
+        answers.innerHTML = `Incorrect!`
     }
-    answers.style.pointerEvents = `auto`
-    
-})
+    setTimeout(() =>{
+        answers.innerHTML = ``
+        answers.classList.remove(`${choice}`)
+        index++
+        updateQuestion()
+    }, 1000)
+}
+
 
 //Event listener for correct answer choice
 answers.addEventListener(`click`, (event) => {
     if(event.target.innerHTML === updatedResults[index].correct_answer){
         score += 10
         scoreSpan.innerHTML = score
-        event.target.style.color = `green`
-
+        answerChoice(`correctAnswer`)
+       
     }
     else {
-        event.target.style.color = `red`
+        event.target.style.backgroundColor = `red`
+        const answerOptions = document.querySelectorAll(`#answers div`)
+        answerOptions.forEach(ans => {
+            if(ans.innerHTML === updatedResults[index].correct_answer){
+                ans.style.backgroundColor = `green`
+            }
+        })
+        setTimeout(() => {
+            answerChoice(`incorrectAnswer`)
+        }, 2000)
+         
     }
     //Make answers 'unclickable`
-    answers.style.pointerEvents = `none`
+    // answers.style.pointerEvents = `none`
 })
 
 fetchInfo()
+
+
+// UNUSED FUNCTIONS
+
+//Event Listener for 'next' button to generate new question and answers
+// next.addEventListener(`click`, () => {
+//     index++
+//     if(index >= updatedResults.length){
+//         question.innerHTML = `${scoreSpan.innerHTML}`
+//         answers.innerHTML = ``
+//     }
+//     else {
+//         answers.innerHTML = ``
+//         updateQuestion()
+//     }
+//     answers.style.pointerEvents = `auto`
+    
+// })
 

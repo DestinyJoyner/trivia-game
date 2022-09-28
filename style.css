@@ -38,19 +38,44 @@ main div {
     grid-template-rows: 1fr 1fr;
  }
 
+ .questions {
+    border: 2px solid green;
+    display: grid;
+    justify-content: center;
+    /* align-content: space-between; */
+ }
+
+ .correctAnswer {
+    font-family: DynaPuff;
+    align-self: center;
+    justify-self: center;
+    font-size: 42px;
+    color: green
+ }
+
+ .incorrectAnswer {
+    font-family: DynaPuff;
+    align-self: center;
+    justify-self: center;
+    font-size: 42px;
+    color: red;
+ }
+
  #answers div {
     align-self: center;
     justify-self: center;
     border: 2px solid blue;
-   
-
- }
+}
 
  #answers div:hover {
     background-color: aqua;
+}
 
-
- }
+#next {
+    width: fit-content;
+    height: fit-content;
+    justify-self: center ;
+}
 
  @media (min-width: 768px) {
     main {
