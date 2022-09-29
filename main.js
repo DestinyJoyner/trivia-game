@@ -8,7 +8,7 @@
 */
 
 // IMPORT ALL FUNCTIONS FROM functions.js file
-import {updatedResults, index, question, answers, newGame, scoreSpan, score, 
+import {updatedResults, index, question, answers, newGame, scoreSpan, score, modal,
     updateQuestion,
     fetchInfo,
     answerChoice,
@@ -16,6 +16,7 @@ import {updatedResults, index, question, answers, newGame, scoreSpan, score,
 
 // No functions below this point, only what needs to be run on page load
 
+// Landing Page asking for user input (name) to be used on game page
 let user ;
 const playButton = document.querySelector(`#playButton`)
 const nameInput = document.querySelector(`#userName`)
@@ -29,11 +30,11 @@ playButton.addEventListener(`click`, () => {
     }
 })
 
+// Reset game button to reload page
 const resetButton = document.querySelector(`#reset`)
 resetButton.addEventListener(`click`, () => {
     location.reload()
 })
-
 
 
 

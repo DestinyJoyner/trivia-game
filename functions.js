@@ -7,6 +7,7 @@ export const answers = document.querySelector(`#answers`)
 export const newGame = document.querySelector(`#newGame`)
 export const scoreSpan = document.querySelector(`.score`)
 export let score = 0
+export const modal = document.querySelector(`#myModal`)
 
 // Put for loop in function to repopulate answer options
 const updateQuestion = () => {
@@ -50,9 +51,14 @@ const answerChoice = (choice) => {
         answers.classList.remove(`${choice}`)
         index++
         if(index >= updatedResults.length){
-            question.innerHTML = `<h2>${document.querySelector(`.user`).innerText}<br>Final Score: ${scoreSpan.innerHTML}</h2>`
             answers.innerHTML = ``
+            question.innerHTML = ``
+            // Open Modal
+            modal.style.display = "block"
+            const modalContent = document.querySelector(`.finalScore`)
+            modalContent.innerHTML = `<h2>${document.querySelector(`.user`).innerText}<br>Final Score: ${scoreSpan.innerHTML}</h2>`
             newGame.style.visibility = `visible`
+            
         }
         else{
             updateQuestion()
@@ -88,7 +94,10 @@ answers.addEventListener(`click`, (event) => {
 
 // Event listener for 'New Game Button`
 newGame.addEventListener(`click`, () => {
+    modal.style.display = "none"
     index = 0
+    score = 0
+    scoreSpan.innerHTML = score
     fetchInfo()
 })
 
