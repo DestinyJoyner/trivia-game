@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <script defer src="./main.js" type="module"></script>
-    <title>Document</title>
-</head>
-<body>
+    <title>Destiny's Trivia</title>
+  </head>
+  <body>
     <header>
-        <div class="landingPage">
-            <div>
-                <h2>Trivia App</h2>
-                <label for="user">Please Enter Your Name:</label>
-                <input type="text" name="" id="userName">
-                <input type="button" value="Let's Play" id="playButton">
-            </div>
+      <div class="landingPage">
+        <div>
+          <h2>Trivia App</h2>
+          <label for="user">Please Enter Your Name:</label>
+          <input type="text" name="" id="userName" />
+          <input type="button" value="Let's Play" id="playButton" />
         </div>
+      </div>
     </header>
-    <br><br>
+    <br /><br />
     <main class="hidden">
-        <div class="questions">
-            <h2 id="question"></h2>
+      <div class="questions">
+        <h2 id="question"></h2>
+      </div>
+      <div id="answers"></div>
+      <div class="scoreboard">
+        <p>Score: <br /><span class="score">0</span></p>
+        <button id="reset">Reset Game</button>
+      </div>
+      <div class="link">
+        <a
+          href="https://www.linkedin.com/in/destiny-joyner-934846243/"
+          target="_blank"
+          >Contact Me</a>
+      </div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <p class="finalScore"></p>
+          <button id="newGame">New Game</button>
         </div>
-        <div id="answers"></div>
-        <div class="scoreboard">
-            <p>Score: <br><span class="score">0</span></p>
-            <button id="reset">Reset Game</button>
-        </div>
-       <div class="link">
-        <a href="https://www.linkedin.com/in/destiny-joyner-934846243/" target="_blank">Contact Me</a>
-       </div>
-        
-       <!-- The Modal -->
-<div id="myModal" class="modal">
-    <!-- Modal content -->
-     <div class="modal-content">
-       <p class="finalScore"></p>
-       <button id="newGame">New Game</button>
-     </div>
-     
-   </div>
-       
+      </div>
     </main>
-   
-</body>
+  </body>
 </html>
