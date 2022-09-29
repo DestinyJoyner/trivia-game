@@ -197,7 +197,39 @@ h1, p, #question {
     color: navy;
     font-size: 16px;
 }
+#reset:hover {
+    background-color: red;
+    font-size: 20px;
+}
 
+.link {
+    grid-column: 1;
+    grid-row: 2;
+    /* width: 100%; */
+    height: 150px;
+    background-image: url('./assets/game-show-bitmoji.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    
+}
+.link a {
+    position: relative;
+    top: -35px;
+    left: -15px;
+    font-size: 18px;
+    font-family: a attack graffiti ;
+    color: navy;
+    background-color: gold;
+}
+a:hover {
+    background-color: navy;
+    color: gold;
+    font-size: 24px;
+}
 
  @media (min-width: 400px) {
     main {
