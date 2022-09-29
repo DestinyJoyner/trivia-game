@@ -12,7 +12,7 @@ export const modal = document.querySelector(`#myModal`)
 // Put for loop in function to repopulate answer options
 
 const updateQuestion = () => {
-    const difficulty = updatedResults[index].difficulty 
+    const difficulty = `${updatedResults[index].difficulty.charAt(0).toUpperCase()}${updatedResults[index].difficulty.slice(1)}`
     question.innerHTML = `
     <h5>${difficulty}</h5>
     ${updatedResults[index].question}`
@@ -76,15 +76,15 @@ const answerChoice = (choice) => {
 
 //Event listener for correct answer choice
 answers.addEventListener(`click`, (event) => {
-    const points = document.querySelector(`h5`)
+    const points = document.querySelector(`h5`).innerText
     if(event.target.innerHTML === updatedResults[index].correct_answer){
-        if(points.innerText === `easy`){
+        if(points === `Easy`){
             score += 3
         }
-        if(points.innerText === `medium`){
+        if(points === `Medium`){
             score += 7
         }
-        if(points.innerText === `hard`){
+        if(points === `Hard`){
             score += 10
         }
         scoreSpan.innerHTML = score
