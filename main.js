@@ -23,10 +23,15 @@ playButton.addEventListener(`click`, () => {
     if(nameInput.value){
         user = nameInput.value
         document.querySelector(`header`).innerHTML = `
-        <h1>Hey <span class="user">${nameInput.value}!,</span> What do you know?<br>Do You Know Things? Let's Find Out!</h1>`
+        <h1>Hey <span class="user">${nameInput.value},</span> What do you know?<br>Do You Know Things? Lets Find Out!</h1>`
         fetchInfo()
         document.querySelector(`main`).classList.toggle(`hidden`)
     }
+})
+
+const resetButton = document.querySelector(`#reset`)
+resetButton.addEventListener(`click`, () => {
+    location.reload()
 })
 
 

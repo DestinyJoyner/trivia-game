@@ -73,10 +73,11 @@ answers.addEventListener(`click`, (event) => {
     // Eliminates turning background color of answers red when area around answer choices is clicked
     else if(event.target.innerHTML !== answers.innerHTML && event.target.innerHTML !== updatedResults[index].correct_answer ) {
         event.target.style.backgroundColor = `red`
+        event.target.style.textDecoration = `line-through`
         const answerOptions = document.querySelectorAll(`#answers div`)
         answerOptions.forEach(ans => {
             if(ans.innerHTML === updatedResults[index].correct_answer){
-                ans.style.backgroundColor = `green`
+                ans.style.backgroundColor = `rgb(43, 203, 43)`
             }
         })
         setTimeout(() => {
