@@ -16,10 +16,12 @@ import {updatedResults, index, question, answers, newGame, scoreSpan, score,
 
 // No functions below this point, only what needs to be run on page load
 
+let user ;
 const playButton = document.querySelector(`#playButton`)
 const nameInput = document.querySelector(`#userName`)
 playButton.addEventListener(`click`, () => {
     if(nameInput.value){
+        user = nameInput.value
         document.querySelector(`header`).innerHTML = `
         <h1>Hey, <span class="user">${nameInput.value}</span> What do you know? Do You Know Things? Let's Find Out!</h1>`
         fetchInfo()

@@ -50,7 +50,7 @@ const answerChoice = (choice) => {
         answers.classList.remove(`${choice}`)
         index++
         if(index >= updatedResults.length){
-            question.innerHTML = `${scoreSpan.innerHTML}`
+            question.innerHTML = `${document.querySelector(`.user`).innerText}<br>Final Score: ${scoreSpan.innerHTML}`
             answers.innerHTML = ``
             newGame.style.visibility = `visible`
         }
