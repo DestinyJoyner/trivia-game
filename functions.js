@@ -10,8 +10,12 @@ export let score = 0
 export const modal = document.querySelector(`#myModal`)
 
 // Put for loop in function to repopulate answer options
+
 const updateQuestion = () => {
-    question.innerHTML = updatedResults[index].question
+    const difficulty = updatedResults[index].difficulty 
+    question.innerHTML = `
+    <h5>${difficulty}</h5>
+    ${updatedResults[index].question}`
     if(document.querySelector(`#newGame`)){
         document.querySelector(`#newGame`).style.visibility = `hidden`
     }
@@ -24,6 +28,7 @@ const updateQuestion = () => {
         answers.append(div)
     }
 }
+
 
 const fetchInfo = async () => {
     const resp = await fetch(`https://opentdb.com/api.php?amount=3&type=multiple`)
@@ -53,7 +58,7 @@ const answerChoice = (choice) => {
         if(index >= updatedResults.length){
             answers.innerHTML = ``
             question.innerHTML = ``
-            // Open Modal
+            // Open Modal Upon Game Completion
             modal.style.display = "block"
             const modalContent = document.querySelector(`.finalScore`)
             modalContent.innerHTML = `<h2>${document.querySelector(`.user`).innerText}<br>Final Score: ${scoreSpan.innerHTML}</h2>`
@@ -71,8 +76,17 @@ const answerChoice = (choice) => {
 
 //Event listener for correct answer choice
 answers.addEventListener(`click`, (event) => {
+    const points = document.querySelector(`h5`)
     if(event.target.innerHTML === updatedResults[index].correct_answer){
-        score += 10
+        if(points.innerText === `easy`){
+            score += 3
+        }
+        if(points.innerText === `medium`){
+            score += 7
+        }
+        if(points.innerText === `hard`){
+            score += 10
+        }
         scoreSpan.innerHTML = score
         answerChoice(`correctAnswer`)
     }

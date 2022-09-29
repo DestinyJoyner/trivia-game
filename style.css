@@ -126,7 +126,7 @@ h1, p, #question {
     background-position: center;
     color: rgb(14, 12, 1);
     font-family: chalkboard ;
-    font-size: 20px;
+    font-size: 16px;
  }
 
  #question {
@@ -260,7 +260,11 @@ a:hover {
     to {top: 0; opacity: 1}
   }
 
-
+ h5 {
+    margin-bottom: 10px;
+    margin-top: 0;
+    text-decoration: underline;
+ }
 
 /* Media Query */
  @media (min-width: 400px) {
