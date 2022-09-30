@@ -37,7 +37,7 @@ const updateQuestion = (value=false) => {
 
 
 const fetchInfo = async () => {
-    const resp = await fetch(`https://opentdb.com/api.php?amount=3&type=multiple`)
+    const resp = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple`)
     const respJson = await resp.json()
 
     updatedResults = respJson.results.map((question) => {

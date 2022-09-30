@@ -53,6 +53,9 @@ previousButton.addEventListener(`click`, () => {
         answers.innerHTML = sessionStorage.getItem(index)
        answers.style.pointerEvents = `none`
     }
+    else{
+        alert(`There aren't any previous questions.`)
+    }
 })
 
 nextButton.addEventListener(`click`, () => {
