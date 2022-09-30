@@ -15,9 +15,20 @@ export const modal = document.querySelector(`#myModal`)
 
 const updateQuestion = (value=false) => {
     const difficulty = `${updatedResults[index].difficulty.charAt(0).toUpperCase()}${updatedResults[index].difficulty.slice(1)}`
+    
     question.innerHTML = `
     <h5>${difficulty}</h5>
     ${updatedResults[index].question}`
+    // Add point value next to difficulty
+    if(document.querySelector('h5').innerText === `Easy`){
+        document.querySelector('h5').innerText += ` (3pts)`
+    }
+    if(document.querySelector('h5').innerText === `Medium`){
+        document.querySelector('h5').innerText += ` (7pts)`
+    }
+    if(document.querySelector('h5').innerText === `Hard`){
+        document.querySelector('h5').innerText += ` (10pts)`
+    }
     if(document.querySelector(`#newGame`)){
         document.querySelector(`#newGame`).style.visibility = `hidden`
     }
@@ -87,13 +98,13 @@ answers.addEventListener(`click`, (event) => {
     const points = document.querySelector(`h5`).innerText
     if(event.target.innerHTML === updatedResults[index].correct_answer){
         event.target.style.backgroundColor = `rgb(43, 203, 43)`
-        if(points === `Easy`){
+        if(points === `Easy (3pts)`){
             score += 3
         }
-        if(points === `Medium`){
+        if(points === `Medium (7pts)`){
             score += 7
         }
-        if(points === `Hard`){
+        if(points === `Hard (10pts)`){
             score += 10
         }
         scoreSpan.innerHTML = score
