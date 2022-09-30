@@ -70,6 +70,8 @@ const answerChoice = (choice) => {
             modalContent.innerHTML = `<h2>${document.querySelector(`.user`).innerText}<br>Final Score: ${scoreSpan.innerHTML}</h2>`
             newGame.style.visibility = `visible`
             
+            document.querySelector(`.questions`).style.visibility = `hidden`
+            
         }
         else{
             updateQuestion()
@@ -119,6 +121,7 @@ answers.addEventListener(`click`, (event) => {
 // Event listener for 'New Game Button`
 newGame.addEventListener(`click`, () => {
     modal.style.display = "none"
+    document.querySelector(`.questions`).style.visibility = `visible`
     index = 0
     score = 0
     scoreSpan.innerHTML = score

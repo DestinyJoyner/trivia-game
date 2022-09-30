@@ -67,6 +67,7 @@ nextButton.addEventListener(`click`, () => {
             updatedResults[index].incorrect_answers.push(ans)
         })
         updateQuestion()
+        answerSelected = false 
     }
 })
 
