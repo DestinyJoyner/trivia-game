@@ -41,20 +41,27 @@ resetButton.addEventListener(`click`, () => {
 
 
 //PREVIOUS NEXT BUTTONS/ SESSION STORAGE
+
+// NEED TO WORK ON BEING ABLE TO VIEW MORE THAN ONE PREVIOUS QUESTION (RIGHT NOW PURPOSELY PREVENTED IT)
 const previousButton = document.querySelector(`.previous`)
 const nextButton = document.querySelector(`.next`)
 let answerSelected = false
+let goBack = 0
 
 previousButton.addEventListener(`click`, () => {
-    if(index !== 0){
-        answerSelected = true 
+    if(index === 0){
+        alert(`There aren't any previous questions.`)
+    }
+    else if(goBack < 0){
+        alert(`Cannot View Anymore Previous Questions At This Time `)
+    }
+    else{
+        answerSelected = true
+        goBack -= 1
         modifyX( index-1)
         updateQuestion(true)
         answers.innerHTML = sessionStorage.getItem(index)
        answers.style.pointerEvents = `none`
-    }
-    else{
-        alert(`There aren't any previous questions.`)
     }
 })
 
@@ -65,7 +72,8 @@ nextButton.addEventListener(`click`, () => {
     else{
         answers.style.pointerEvents = `auto`
         answers.innerHTML = ``
-        modifyX( index+1)
+        goBack +=1 
+        modifyX( index + 1)
         sessionStorage.getItem(`answers`).split(`,`).forEach(ans => {
             updatedResults[index].incorrect_answers.push(ans)
         })
