@@ -124,8 +124,8 @@ h1, p, #question {
 
  #question {
     overflow-wrap: break-word;
-    width: 60%;
-    margin: auto;
+    width: 50%;
+    margin: none;
     font-family: cabin sketch;
     color: gold;
 
@@ -256,6 +256,16 @@ a:hover {
     margin-top: 0;
     border: 2px dotted;
  }
+
+ /* Previous-Next Buttons */
+ .previous, .next {
+    height: 50px;
+    background-color: navy;
+    color: red;
+    border: 2px solid gold;
+    font-size: 20px;
+ }
+
 
 /* Media Query */
  @media (max-width: 650px) {

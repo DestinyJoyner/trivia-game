@@ -1,6 +1,7 @@
 
 export let updatedResults;
 export let index = 0
+export function modifyX( value ) { index = value; }
 
 export const question = document.querySelector('#question')
 export const answers = document.querySelector(`#answers`)
@@ -9,9 +10,10 @@ export const scoreSpan = document.querySelector(`.score`)
 export let score = 0
 export const modal = document.querySelector(`#myModal`)
 
+
 // Put for loop in function to repopulate answer options
 
-const updateQuestion = () => {
+const updateQuestion = (value=false) => {
     const difficulty = `${updatedResults[index].difficulty.charAt(0).toUpperCase()}${updatedResults[index].difficulty.slice(1)}`
     question.innerHTML = `
     <h5>${difficulty}</h5>
@@ -19,7 +21,11 @@ const updateQuestion = () => {
     if(document.querySelector(`#newGame`)){
         document.querySelector(`#newGame`).style.visibility = `hidden`
     }
-
+    // NEED TO SAVE INCORRECT ARRAY B4 SPLICE FOR NEXT BUTTON TO CALL UPDATEQUESTION() AND HAVE VALUES INSIDE
+    if(!value){
+        sessionStorage.setItem(`answers`, updatedResults[index].incorrect_answers)
+    }
+    
     for (let i = 0; i < 4; i++){
         const div = document.createElement(`div`)
         const randomNum = Math.floor(Math.random() * updatedResults[index].incorrect_answers.length) 
@@ -78,6 +84,7 @@ const answerChoice = (choice) => {
 answers.addEventListener(`click`, (event) => {
     const points = document.querySelector(`h5`).innerText
     if(event.target.innerHTML === updatedResults[index].correct_answer){
+        event.target.style.backgroundColor = `rgb(43, 203, 43)`
         if(points === `Easy`){
             score += 3
         }
@@ -88,6 +95,7 @@ answers.addEventListener(`click`, (event) => {
             score += 10
         }
         scoreSpan.innerHTML = score
+        sessionStorage.setItem(`${index}`, `${answers.innerHTML}`)
         answerChoice(`correctAnswer`)
     }
     // Eliminates turning background color of answers red when area around answer choices is clicked
@@ -100,6 +108,8 @@ answers.addEventListener(`click`, (event) => {
                 ans.style.backgroundColor = `rgb(43, 203, 43)`
             }
         })
+        // STORE CHOSEN ANSWERS IN SESSION STORAGE
+        sessionStorage.setItem(`${index}`, `${answers.innerHTML}`)
         setTimeout(() => {
             answerChoice(`incorrectAnswer`)
         }, 2000)
@@ -112,6 +122,7 @@ newGame.addEventListener(`click`, () => {
     index = 0
     score = 0
     scoreSpan.innerHTML = score
+    sessionStorage.clear()
     fetchInfo()
 })
 
